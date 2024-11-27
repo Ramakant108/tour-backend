@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler")
 const User = require("../models/userModel")
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcryptjs")
 
 //@desc register the user
 //route post /api/user/register
@@ -73,5 +73,11 @@ const loginUser = asyncHandler(async (req, res) => {
     });
 });
 
+const allUsers = asyncHandler(async (req, res) => {
+    // Fetch all tours for the specific user (based on Uid)
+    const user = await User.find();
+    res.status(200).json(user);
+});
 
-module.exports = {registerUser, loginUser}
+
+module.exports = {registerUser, loginUser, allUsers}

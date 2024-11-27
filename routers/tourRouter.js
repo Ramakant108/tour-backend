@@ -1,16 +1,40 @@
 const express = require("express");
-const { getHotels, getHotel, createHotel, updateHotel, deleteHotel,getupdateHotel } = require("../controller/tourController");
+const {
+    getTours,
+    getTour,
+    createTour,
+    updateTour,
+    deleteTour,
+    getupdateTour,
+    allTours
+} = require("../controller/tourController");
 const router = express.Router();
 
-router.route("/:id").get(getHotels);
+// @route GET /:id
+// @desc Retrieve all tours for a specific user (identified by user ID)
+router.route("/:id").get(getTours);
 
-router.route("/:id/:title").get(getHotel);
-router.route("/:uid/update/:tid").get(getupdateHotel);
+router.route("/").get(allTours);
 
-router.route("/").post(createHotel);
+// @route GET /:id/:title
+// @desc Retrieve a specific tour by user ID and tour title
+router.route("/:id/:title").get(getTour);
 
-router.route("/:id").put(updateHotel);
+// @route GET /:uid/update/:tid
+// @desc Retrieve a specific tour for update by user ID and tour ID
+router.route("/:uid/update/:tid").get(getupdateTour);
 
-router.route("/:id").delete( deleteHotel);
+// @route POST /
+// @desc Create a new tour
+router.route("/").post(createTour);
 
+// @route PUT /:id
+// @desc Update an existing tour by its ID
+router.route("/:id").put(updateTour);
+
+// @route DELETE /:id
+// @desc Delete an existing tour by its ID
+router.route("/:id").delete(deleteTour);
+
+// Export the router to be used in the application
 module.exports = router;
