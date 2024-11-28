@@ -5,7 +5,7 @@ const connectDb = async () => {
     try {
         // Attempt to connect to the database using the provided connection string
         const connect = await mongoose.connect(
-            "mongodb+srv://admin:admin@cluster0.pvc7p.mongodb.net/tour_backend?retryWrites=true&w=majority&appName=Cluster0"
+            "mongodb+srv://admin:admin@cluster0.ljveo.mongodb.net/tourBackend?retryWrites=true&w=majority&appName=Cluster0"
         );
 
         // Log a success message with the database host and name
